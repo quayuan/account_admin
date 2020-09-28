@@ -12,9 +12,14 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import sys
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+
+# 指定导包路径
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -36,20 +41,28 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 'maxcn.apps.users.apps.UsersConfig',
+    'users.apps.UsersConfig',
+    'testmodel.apps.TestmodelConfig',
+
+    # 跨域cors
+    # 'corsheaders',
 ]
 
 MIDDLEWARE = [
+    # 'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'maxcn.urls'
-
 
 # set jinja2
 TEMPLATES = [
@@ -93,6 +106,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
+#         'HOST': '127.0.0.1',  # 数据库主机
+#         'PORT': 3306,  # 数据库端口
+#         'USER': 'maxcn',  # 数据库用户名
+#         'PASSWORD': '123456',  # 数据库用户密码
+#         'NAME': 'maxcn_vpn'  # 数据库名字
+#     },
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -171,3 +196,12 @@ LOGGING = {
         },
     }
 }
+
+# # CORS
+# CORS_ORIGIN_WHITELIST = (
+#     '127.0.0.1:8080',
+#     'localhost:8080',
+#     'www.meiduo.site:8080',
+#     'api.meiduo.site:8000'
+# )
+# CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie

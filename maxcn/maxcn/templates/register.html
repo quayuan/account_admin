@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>maxcn-vpn</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<body>
+<div>
+    <h1>信乘数据 VPN 注册</h1>
+</div>
+
+<div style="margin-top: 30px">
+
+    <form method="POST">
+  <div class="form-group">
+    <label for="formGroupExampleInput">User name</label>
+    <input type="text" class="form-control" name="user_name" id="formGroupExampleInput" placeholder=" VPN account user name （请输入5-20个字符的用户名, 由字母、数字、下划线组成）">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" name="pwd" id="exampleInputPassword1" placeholder=" VPN account password（请输入8-20位的密码）">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Re-enter Password</label>
+    <input type="password" class="form-control" name="cpwd" id="exampleInputPassword2" placeholder="Confirm your VPN account password （确认密码）">
+  </div>
+
+
+<div>
+        <label>Server Type</label>
+        <select name="server_type">
+            <option> pptpd </option>
+            <option> test2 </option>
+        </select>
+</div>
+
+<div style="margin-top: 30px">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+    </form>
+</div>
+</body>
+</html>
