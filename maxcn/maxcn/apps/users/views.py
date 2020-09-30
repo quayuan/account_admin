@@ -33,9 +33,10 @@ class RegisterView(View):
         # 创建日志记录器
         logger = logging.getLogger('django')
         # 输出日志
-        logger.info('user_name')
-        logger.info('pwd')
-        logger.info('cpwd')
+        logger.info(f'user_name : {user_name}')
+        logger.info(f'pwd : {pwd}')
+        logger.info(f'cpwd : {cpwd}')
+        logger.info(f'server_type : {server_type}')
 
         if not all([user_name, pwd, cpwd, server_type]):
             return http.HttpResponseBadRequest('请填写完整信息')
@@ -60,6 +61,10 @@ class RegisterView(View):
                 'server_type': server_type
             }
         except Exception as e:
-            return http.HttpResponseBadRequest('用户添加失败')
+            error_response = {
+                'status_code': 500,
+                'error_info': e
+            }
+            return http.JsonResponse(error_response)
 
         return http.JsonResponse(response)

@@ -102,23 +102,23 @@ WSGI_APPLICATION = 'maxcn.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
-        'HOST': '127.0.0.1',  # 数据库主机
-        'PORT': 3306,  # 数据库端口
-        'USER': 'maxcn',  # 数据库用户名
-        'PASSWORD': '123456',  # 数据库用户密码
-        'NAME': 'maxcn_vpn'  # 数据库名字
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+    }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
+#         'HOST': '127.0.0.1',  # 数据库主机
+#         'PORT': 3306,  # 数据库端口
+#         'USER': 'maxcn',  # 数据库用户名
+#         'PASSWORD': '123456',  # 数据库用户密码
+#         'NAME': 'maxcn_vpn'  # 数据库名字
+#     },
+# }
 
 
 # Password validation
@@ -206,7 +206,6 @@ AUTH_USER_MODEL = 'users.User'
 # CORS_ORIGIN_WHITELIST = (
 #     '127.0.0.1:8080',
 #     'localhost:8080',
-#     'www.meiduo.site:8080',
-#     'api.meiduo.site:8000'
+#     '192.168.1.125:8080'
 # )
 # CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie

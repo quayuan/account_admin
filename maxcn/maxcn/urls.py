@@ -20,6 +20,6 @@ from django.conf.urls import url, include
 urlpatterns = [
     # path('admin/', admin.site.urls),
     url('^user/', include('maxcn.apps.users.urls')),
-    url('^test/', include('maxcn.apps.testmodel.urls')),
+    url('^', include('maxcn.apps.testmodel.urls')),
 
 ]

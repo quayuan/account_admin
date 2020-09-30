@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [
     # url(r'^$', views.hello),
-    path('hello/', views.hello),
+    path('', views.hello),
 ]
