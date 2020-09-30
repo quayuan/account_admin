@@ -16,10 +16,12 @@ import sys
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+# BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # 指定导包路径
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'apps'))
+# sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -100,23 +102,23 @@ WSGI_APPLICATION = 'maxcn.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
-#         'HOST': '127.0.0.1',  # 数据库主机
-#         'PORT': 3306,  # 数据库端口
-#         'USER': 'maxcn',  # 数据库用户名
-#         'PASSWORD': '123456',  # 数据库用户密码
-#         'NAME': 'maxcn_vpn'  # 数据库名字
-#     },
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'db.sqlite3',
+#     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
+        'HOST': '127.0.0.1',  # 数据库主机
+        'PORT': 3306,  # 数据库端口
+        'USER': 'maxcn',  # 数据库用户名
+        'PASSWORD': '123456',  # 数据库用户密码
+        'NAME': 'maxcn_vpn'  # 数据库名字
+    },
+}
 
 
 # Password validation
@@ -196,6 +198,9 @@ LOGGING = {
         },
     }
 }
+
+# 指定用户类型
+AUTH_USER_MODEL = 'users.User'
 
 # # CORS
 # CORS_ORIGIN_WHITELIST = (

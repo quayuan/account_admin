@@ -4,6 +4,8 @@ from django import http
 import re
 import logging
 
+from users.models import User
+
 
 class RegisterView(View):
     """
@@ -47,13 +49,17 @@ class RegisterView(View):
             return http.HttpResponseBadRequest('请输入8-20位的密码')
         # 2.5两个密码是否一致
         if pwd != cpwd:
-            return http.HttpResponseBadRequest('两个密码不一致')
+            return http.HttpResponseBadRequest('两次密码输入不一致')
+        try:
+            user = User.objects.create_user(username=user_name, password=pwd, server_type=server_type)
 
-        response = {
-            'user_name': user_name,
-            'password': pwd,
-            'check_password': cpwd,
-            'server_type': server_type
-        }
+            response = {
+                'user_name': user_name,
+                'password': pwd,
+                'check_password': cpwd,
+                'server_type': server_type
+            }
+        except Exception as e:
+            return http.HttpResponseBadRequest('用户添加失败')
 
         return http.JsonResponse(response)
